@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\UserAudit;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use UserAudit;
 
     protected $table = 'posts';
     protected $fillable = [
@@ -18,8 +20,6 @@ class Post extends Model
         'status_id',
         'content',
         'publish_at',
-        'created_by',
-        'updated_by',
     ];
 
     public function publishAt(): Attribute
