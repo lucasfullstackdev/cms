@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->boolean('active')->default(true);
 
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
+
             $table->timestamps();
             $table->softDeletes();
         });

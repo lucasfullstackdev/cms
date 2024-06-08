@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('post_id')->constrained('posts');
             $table->foreignId('tag_id')->constrained('tags');
 
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
+
             // Ensure that the combination of `post_id` and `tag_id` is unique.
             $table->unique(['post_id', 'tag_id']);
 
