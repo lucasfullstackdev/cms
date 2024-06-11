@@ -3,10 +3,8 @@
 namespace App\Domains\Admin\Tags;
 
 use App\Domains\Admin\Tags\Dtos\TagReceived;
-use App\Domains\Admin\Tags\Requests\Store;
-use App\Domains\Admin\Tags\Requests\Update;
+use App\Domains\Admin\Tags\Requests\{Store, Update};
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class TagController extends Controller
@@ -69,6 +67,9 @@ class TagController extends Controller
      */
     public function destroy(string $id)
     {
-        dd('Hello from TagController@destroy');
+        return response()->json([
+            'message' => 'Tag deleted successfully',
+            'data' => $this->tagService->destroy($id)
+        ], Response::HTTP_OK);
     }
 }

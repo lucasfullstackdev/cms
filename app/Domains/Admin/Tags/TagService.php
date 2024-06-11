@@ -86,6 +86,17 @@ final class TagService
     );
   }
 
+  public function destroy(string $id): bool
+  {
+    $tag = $this->find($id);
+
+    if (is_null($tag)) {
+      return false;
+    }
+
+    return $tag->delete();
+  }
+
   private function find(string $id): ?Tag
   {
     return $this->tag->find($id);
