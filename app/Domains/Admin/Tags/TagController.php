@@ -2,12 +2,18 @@
 
 namespace App\Domains\Admin\Tags;
 
+use App\Domains\Admin\Tags\Dtos\TagReceived;
 use App\Domains\Admin\Tags\Requests\Store;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class TagController extends Controller
 {
+    public function __construct(private TagService $tagService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +27,15 @@ class TagController extends Controller
      */
     public function store(Store $request)
     {
-        dd('Hello from TagController@store');
+        return response()->json([
+            'message' => 'Tag created successfully',
+            'data' => $this->tagService->store(
+                new TagReceived(
+                    name: $request->name,
+                    active: $request->active
+                )
+            )
+        ], Response::HTTP_CREATED);
     }
 
     /**
