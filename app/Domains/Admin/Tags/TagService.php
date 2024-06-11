@@ -3,19 +3,21 @@
 namespace App\Domains\Admin\Tags;
 
 use App\Domains\Admin\Tags\Dtos\{TagForUserViewing, TagReceived};
-use App\Exceptions\NotFoundException;
-use App\Exceptions\StoreException;
+use App\Domains\DomainService;
+use App\Models\Model;
 use App\Models\Tag;
 
-final class TagService
+final class TagService extends DomainService
 {
-  public function __construct(private Tag $tag)
-  {
+  public function __construct(
+    protected Model $model = new Tag(),
+    protected string $entity = 'Tag'
+  ) {
   }
 
   public function index()
   {
-    $paginate = $this->tag->with('createdBy')->paginate();
+    $paginate = $this->with(['createdBy'])->paginate();
 
     $mappedRecords = $paginate->getCollection()->map(function ($record) {
       return new TagForUserViewing(
@@ -35,15 +37,7 @@ final class TagService
 
   public function store(TagReceived $tagReceived): ?TagForUserViewing
   {
-    try {
-      $tagCreated = $this->tag->create($tagReceived->toArray());
-    } catch (\Exception $e) {
-      throw new StoreException(
-        message: 'An error occurred while creating the tag',
-        errors: $e->getMessage(),
-        data: $tagReceived
-      );
-    }
+    $tagCreated = $this->createEntity($tagReceived);
 
     return new TagForUserViewing(
       id: $tagCreated->id,
@@ -56,10 +50,6 @@ final class TagService
   {
     $tag = $this->find($id);
 
-    if (is_null($tag)) {
-      return null;
-    }
-
     return new TagForUserViewing(
       id: $tag->id,
       name: $tag->name,
@@ -71,9 +61,7 @@ final class TagService
 
   public function update(TagReceived $tagReceived, string $id): ?TagForUserViewing
   {
-    $tag = $this->find($id);
-
-    $tag->update($tagReceived->toArray());
+    $tag = $this->updateEntity($tagReceived, $id);
 
     return new TagForUserViewing(
       id: $tag->id,
@@ -82,18 +70,21 @@ final class TagService
     );
   }
 
-  public function destroy(string $id): bool
+  public function inactivate(string $id): bool
   {
-    return $this->find($id)->delete();
+    $tag = $this->find($id);
+    $tag->active = false;
+    $tag->save();
+
+    return true;
   }
 
-  private function find(string $id): Tag
+  public function activate(string $id): bool
   {
-    $finded = $this->tag->find($id);
-    if (is_null($finded)) {
-      throw new NotFoundException('Tag not found', $id);
-    }
+    $tag = $this->find($id);
+    $tag->active = true;
+    $tag->save();
 
-    return $finded;
+    return true;
   }
 }

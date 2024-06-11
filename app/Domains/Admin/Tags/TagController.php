@@ -72,4 +72,20 @@ class TagController extends Controller
             'data' => $this->tagService->destroy($id)
         ], Response::HTTP_OK);
     }
+
+    public function inactivate(string $id)
+    {
+        return response()->json([
+            'message' => 'Tag inactivated successfully',
+            'data' => $this->tagService->inactivate($id)
+        ], Response::HTTP_OK);
+    }
+
+    public function activate(string $id)
+    {
+        return response()->json([
+            'message' => 'Tag activated successfully',
+            'data' => $this->tagService->activate($id)
+        ], Response::HTTP_OK);
+    }
 }
