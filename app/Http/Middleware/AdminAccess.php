@@ -17,7 +17,7 @@ class AdminAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role->name !== Role::ADMIN->value) {
+        if (Auth::user()->isAdmin() === false) {
             return response()->json(['message' => 'Only admin can access this route'], Response::HTTP_FORBIDDEN);
         }
 
