@@ -19,7 +19,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        dd('Hello from TagController@index');
+        return response()->json($this->tagService->index(), Response::HTTP_OK);
     }
 
     /**
