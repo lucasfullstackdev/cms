@@ -2,9 +2,9 @@
 
 namespace App\Domains\Admin\Tags\Dtos;
 
-use App\Domains\Dto;
+use App\Domains\DomainDto;
 
-final class TagReceived extends Dto
+final class TagReceived extends DomainDto
 {
   public function __construct(
     public string $name,
