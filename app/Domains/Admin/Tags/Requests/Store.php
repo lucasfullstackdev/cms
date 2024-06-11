@@ -15,7 +15,7 @@ class Store extends AdminRequest
     {
         return [
             'name' => 'required|string|max:255|unique:tags,name',
-            'active' => 'required|boolean',
+            'active' => 'nullable|boolean',
         ];
     }
 }
