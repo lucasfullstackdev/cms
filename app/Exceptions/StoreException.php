@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Domains\Dto;
+use App\Dtos\Dto;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
