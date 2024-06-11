@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Domains\Admin\Tags\Requests;
+
+use App\Domains\Admin\AdminRequest;
+
+final class Update extends AdminRequest
+{
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => 'string|max:255|unique:tags,name',
+            'active' => 'boolean',
+        ];
+    }
+}

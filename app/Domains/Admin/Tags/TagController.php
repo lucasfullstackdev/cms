@@ -4,6 +4,7 @@ namespace App\Domains\Admin\Tags;
 
 use App\Domains\Admin\Tags\Dtos\TagReceived;
 use App\Domains\Admin\Tags\Requests\Store;
+use App\Domains\Admin\Tags\Requests\Update;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,9 +50,18 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Update $request, string $id)
     {
-        dd('Hello from TagController@update');
+        return response()->json([
+            'message' => 'Tag updated successfully',
+            'data' => $this->tagService->update(
+                new TagReceived(
+                    name: $request->name,
+                    active: $request->active
+                ),
+                $id
+            )
+        ], Response::HTTP_OK);
     }
 
     /**

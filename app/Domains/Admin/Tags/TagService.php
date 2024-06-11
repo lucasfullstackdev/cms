@@ -69,6 +69,23 @@ final class TagService
     );
   }
 
+  public function update(TagReceived $tagReceived, string $id): ?TagForUserViewing
+  {
+    $tag = $this->find($id);
+
+    if (is_null($tag)) {
+      return null;
+    }
+
+    $tag->update($tagReceived->toArray());
+
+    return new TagForUserViewing(
+      id: $tag->id,
+      name: $tag->name,
+      active: $tag->active
+    );
+  }
+
   private function find(string $id): ?Tag
   {
     return $this->tag->find($id);
