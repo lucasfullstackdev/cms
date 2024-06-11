@@ -43,7 +43,7 @@ class TagController extends Controller
      */
     public function show(string $id)
     {
-        dd('Hello from TagController@show');
+        return response()->json($this->tagService->show($id), Response::HTTP_OK);
     }
 
     /**

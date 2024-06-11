@@ -51,4 +51,26 @@ final class TagService
       active: $tagCreated->active
     );
   }
+
+  public function show(string $id): ?TagForUserViewing
+  {
+    $tag = $this->find($id);
+
+    if (is_null($tag)) {
+      return null;
+    }
+
+    return new TagForUserViewing(
+      id: $tag->id,
+      name: $tag->name,
+      active: $tag->active,
+      createdBy: $tag->createdBy,
+      updatedBy: $tag->updatedBy
+    );
+  }
+
+  private function find(string $id): ?Tag
+  {
+    return $this->tag->find($id);
+  }
 }
