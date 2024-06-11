@@ -4,7 +4,7 @@ namespace App\Domains\Admin\Tags\Requests;
 
 use App\Domains\Admin\AdminRequest;
 
-class Store extends AdminRequest
+final class Store extends AdminRequest
 {
     /**
      * Get the validation rules that apply to the request.
