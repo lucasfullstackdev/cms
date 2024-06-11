@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\TagController;
+use App\Domains\Admin\Tags\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TagController::class, 'index']);
