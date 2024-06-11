@@ -3,7 +3,7 @@
 namespace App\Domains\Admin\Tags;
 
 use App\Domains\Admin\Tags\Dtos\{TagForUserViewing, TagReceived};
-use App\Dtos\User\UserForUserViewing;
+use App\Exceptions\NotFoundException;
 use App\Exceptions\StoreException;
 use App\Models\Tag;
 
@@ -73,10 +73,6 @@ final class TagService
   {
     $tag = $this->find($id);
 
-    if (is_null($tag)) {
-      return null;
-    }
-
     $tag->update($tagReceived->toArray());
 
     return new TagForUserViewing(
@@ -88,17 +84,16 @@ final class TagService
 
   public function destroy(string $id): bool
   {
-    $tag = $this->find($id);
-
-    if (is_null($tag)) {
-      return false;
-    }
-
-    return $tag->delete();
+    return $this->find($id)->delete();
   }
 
-  private function find(string $id): ?Tag
+  private function find(string $id): Tag
   {
-    return $this->tag->find($id);
+    $finded = $this->tag->find($id);
+    if (is_null($finded)) {
+      throw new NotFoundException('Tag not found', $id);
+    }
+
+    return $finded;
   }
 }
