@@ -6,7 +6,7 @@ use App\Dtos\Dto;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreException extends Exception
+class EloquentException extends Exception
 {
     protected $code = Response::HTTP_INTERNAL_SERVER_ERROR;
 
