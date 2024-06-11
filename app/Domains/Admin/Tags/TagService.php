@@ -3,6 +3,7 @@
 namespace App\Domains\Admin\Tags;
 
 use App\Domains\Admin\Tags\Dtos\{TagForUserViewing, TagReceived};
+use App\Exceptions\StoreException;
 use App\Models\Tag;
 
 final class TagService
@@ -16,7 +17,11 @@ final class TagService
     try {
       $tagCreated = $this->tag->create($tagReceived->toArray());
     } catch (\Exception $e) {
-      throw new \Exception($e->getMessage());
+      throw new StoreException(
+        message: 'An error occurred while creating the tag',
+        errors: $e->getMessage(),
+        data: $tagReceived
+      );
     }
 
     return new TagForUserViewing(
