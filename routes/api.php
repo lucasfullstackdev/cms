@@ -20,5 +20,6 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     // Admin Routes
     Route::prefix('admin')->middleware(AdminAccess::class)->group(function () {
         Route::prefix('/tags')->group(realpath(__DIR__ . '/api/v1/admin/tags.php'));
+        Route::prefix('/post/statuses')->group(realpath(__DIR__ . '/api/v1/admin/post_statuses.php'));
     });
 });
