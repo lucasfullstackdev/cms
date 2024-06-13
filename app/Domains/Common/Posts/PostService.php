@@ -2,7 +2,7 @@
 
 namespace App\Domains\Common\Posts;
 
-use App\Domains\Common\Posts\Dtos\{PostForUserViewing, PostReceived};
+use App\Domains\Common\Posts\Dtos\{PostFilters, PostForUserViewing, PostReceived};
 use App\Domains\DomainService;
 use App\Models\{Model, Post};
 
@@ -12,11 +12,20 @@ final class PostService extends DomainService
     protected Model $model = new Post(),
     protected string $entity = 'Post'
   ) {
+    parent::__construct();
   }
 
-  public function index()
+  public function index(PostFilters $filters)
   {
-    $paginate = $this->with(['createdBy', 'status', 'tags'])->paginate();
+    $paginate = $this->with(['createdBy', 'status', 'tags']);
+
+    if (!empty($filters->tags)) {
+      $paginate = $paginate->whereHas('tags', function ($query) use ($filters) {
+        $query->whereIn('tags.id', $filters->tags);
+      });
+    }
+
+    $paginate = $paginate->paginate();
 
     $mappedRecords = $paginate->getCollection()->map(fn ($record) => $this->PostForUserViewing($record));
 

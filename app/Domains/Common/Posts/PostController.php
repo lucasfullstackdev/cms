@@ -2,7 +2,7 @@
 
 namespace App\Domains\Common\Posts;
 
-use App\Domains\Common\Posts\Dtos\{PostReceived, PostStatusReceived, PostTagsReceived};
+use App\Domains\Common\Posts\Dtos\{PostFilters, PostReceived, PostStatusReceived, PostTagsReceived};
 use App\Domains\Common\Posts\Requests\{Store, Update, UpdateStatus, UpdateTags};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,9 +17,16 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->service->index(), Response::HTTP_OK);
+        return response()->json(
+            $this->service->index(
+                new PostFilters(
+                    tags: $request->tags
+                )
+            ),
+            Response::HTTP_OK
+        );
     }
 
     /**
