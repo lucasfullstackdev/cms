@@ -62,4 +62,14 @@ class User extends Authenticatable
     {
         return $this->role->name === RoleEnum::ADMIN->value;
     }
+
+    public function isWritter(): bool
+    {
+        return $this->role->name === RoleEnum::WRITTER->value;
+    }
+
+    public function isViewer(): bool
+    {
+        return $this->role->name === RoleEnum::VIEWER->value;
+    }
 }
