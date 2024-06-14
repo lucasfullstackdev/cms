@@ -42,6 +42,10 @@ Este projeto tem como finalidade atestar meus conhecimentos nos seguintes pontos
 | tags | Contêm as tags possíveis para uma publicação | Organization, Planning, Collaboration, Writing, Calendar, API, JSON, Schema, Node, GitHub, REST |
 | roles | Contêm os níveis de acessos permitidos | Admin, Writter, Viewer |
 
+<p align="center">
+    <img src="https://github.com/lucasfullstackdev/cms/blob/main/README/database.png" width="900">
+</p>
+
 <br>
 
 ## Sobre as Rotas
@@ -58,7 +62,7 @@ As rotas estão separadas em:
 			- Publicações
 
 <p align="center">
-    <img src="https://github.com/lucasfullstackdev/cms/blob/develop/README/organizacao-das-rotas.jpeg" width="900">
+    <img src="https://github.com/lucasfullstackdev/cms/blob/main/README/organizacao-das-rotas.jpeg" width="900">
 </p>
 
 ### Autenticação
@@ -298,7 +302,7 @@ Estas rotas podem ser acessadas por qualquer usuário devidamente autenticado, p
 	- Apenas consegue listar as publicações :red_circle:
 
 <p align="center">
-    <img src="https://github.com/lucasfullstackdev/cms/blob/develop/README/middlewares.jpeg" width="900">
+    <img src="https://github.com/lucasfullstackdev/cms/blob/main/README/middlewares.jpeg" width="900">
 </p>
 
 #### Publicações
@@ -429,7 +433,7 @@ $ php artisan migrate
 
 ## Observações importantes
 - É aconselhável que você tenha em sua máquina o [postman](https://www.postman.com/) para que possa fazer os devidos testes sobre as rotas disponíveis nesta API.
-- Tenha as collections necessárias para testar [clicando aqui](https://github.com/lucasfullstackdev/cms/blob/develop/README/cms-collection.json)
+- Tenha as collections necessárias para testar [clicando aqui](https://github.com/lucasfullstackdev/cms/blob/main/README/cms-collection.json)
 
 ## Dependências e suas versões
 - [PHP 8.x](https://nodejs.org/en)
