@@ -34,7 +34,7 @@ class Post extends Model
         });
 
         static::updating(function ($model) {
-            $model->updated_by = auth()->id();
+            $model->updated_by = auth()->id() ?? 1;
         });
     }
 

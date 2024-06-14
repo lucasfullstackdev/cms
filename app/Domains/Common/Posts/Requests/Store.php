@@ -21,6 +21,7 @@ final class Store extends BaseRequest
             'status_id' => 'required|integer|exists:post_statuses,id',
             'tags' => 'nullable|array',
             'tags.*' => ['integer', new ExistsNotSoftDeleted(Tag::class)],
+            'publish_at' => 'nullable|date',
         ];
     }
 }

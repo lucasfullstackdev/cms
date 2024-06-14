@@ -4,7 +4,10 @@ namespace App\Domains\Common\Posts;
 
 use App\Domains\Common\Posts\Dtos\{PostFilters, PostForUserViewing, PostReceived};
 use App\Domains\DomainService;
+use App\Enums\PostStatus;
+use App\Jobs\PublishPostJob;
 use App\Models\{Model, Post};
+use Carbon\Carbon;
 
 final class PostService extends DomainService
 {
@@ -39,6 +42,12 @@ final class PostService extends DomainService
   {
     $postCreated = $this->createEntity($postReceived);
     $postCreated->tags()->sync($postReceived->tags);
+
+    // Schedule post to be published
+    if (!empty($postCreated->publish_at) && $postCreated->status->name == PostStatus::SCHEDULED->value) {
+      $publishAt = Carbon::createFromFormat('d/m/Y H:i:s', $postCreated->publish_at);
+      PublishPostJob::dispatch($postCreated)->delay($publishAt);
+    }
 
     return $this->PostForUserViewing($postCreated);
   }

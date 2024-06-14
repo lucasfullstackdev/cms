@@ -103,6 +103,7 @@ class PostController extends Controller
         return new PostReceived(
             title: $request->title,
             content: $request->content,
+            publish_at: $request->publish_at,
             status_id: $request->status_id,
             tags: $request->tags
         );

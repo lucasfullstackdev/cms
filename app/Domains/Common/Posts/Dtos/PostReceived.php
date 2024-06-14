@@ -10,6 +10,7 @@ final class PostReceived extends DomainDto
     public string $title,
     public string $content,
     public int $status_id,
+    public ?string $publish_at = null,
     public array $tags = [],
   ) {
   }
