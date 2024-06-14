@@ -432,8 +432,8 @@ $ php artisan migrate
 - Tenha as collections necessárias para testar [clicando aqui](https://github.com/lucasfullstackdev/cms/blob/develop/README/cms-collection.json)
 
 ## Dependências e suas versões
-- [PHP 8.x](https://nodejs.org/en) 20.6.1
-- [Laravel 11.x](https://www.npmjs.com/) 9,8,1
+- [PHP 8.x](https://nodejs.org/en)
+- [Laravel 11.x](https://www.npmjs.com/)
 - [MySQL](https://www.mysql.com/)
 - [Docker Engine](https://docs.docker.com/engine/all/)
 - [Postman](https://www.postman.com/)
