@@ -1,4 +1,3 @@
-
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -21,7 +20,7 @@ Este projeto tem como finalidade atestar meus conhecimentos nos seguintes pontos
 - Laravel [Sanctum](https://laravel.com/docs/11.x/sanctum)
 - ORM [Eloquent](https://orkhan.gitbook.io/typeorm/)
 - [Middleware](https://laravel.com/docs/11.x/middleware)
-- Processamento em background | [Jobs] (https://laravel.com/docs/11.x/queues#creating-jobs)
+- Processamento em background | [Jobs](https://laravel.com/docs/11.x/queues#creating-jobs)
 - Arquitetura [DDD](https://medium.com/cwi-software/domain-driven-design-do-in%C3%ADcio-ao-c%C3%B3digo-569b23cb3d47)
 - Implementação de Camadas:
 	- [Repository](https://renicius-pagotto.medium.com/entendendo-o-repository-pattern-fcdd0c36b63b)
@@ -68,7 +67,7 @@ As rotas estão separadas em:
 <details>
   <summary>Login</summary>
 
-php
+```php
 Method: GET
 Url: /api/auth/login
 - Payload:
@@ -77,8 +76,9 @@ Url: /api/auth/login
 	"email": "contato@jellycode.com.br",
 	"password": "OtYxBR8ynhLp6Pd"
 }
+```
 
-php
+```php
 Method: GET
 Url: /api/auth/login
 - Payload:
@@ -87,9 +87,9 @@ Url: /api/auth/login
 	"email": "lucas@jellycode.com.br",
 	"password": "123456"
 }
+```
 
-
-php
+```php
 Method: GET
 Url: /api/auth/login
 - Payload:
@@ -98,46 +98,46 @@ Url: /api/auth/login
 	"email": "filipe@jellycode.com.br",
 	"password": "123456"
 }
-
+```
 </details>
 
 <details>
   <summary>Me</summary>
 
-php
+```php
 Method: GET
 Authorization: 
 - Auth Type: Bearer Token
 - Token: Bearer {{token}}
 
 Url: /api/auth/me
-
+```
 </details>
 
 <details>
   <summary>Deslogar</summary>
 
-php
+```php
 Method: GET
 Authorization: 
 - Auth Type: Bearer Token
 - Token: Bearer {{token}}
 
 Url: /api/auth/logout
-
+```
 </details>
 
 <details>
   <summary>Deslogar de todos os dispositivos</summary>
 
-php
+```php
 Method: GET
 Authorization: 
 - Auth Type: Bearer Token
 - Token: Bearer {{token}}
 
 Url: /api/auth/logout/all
-
+```
 </details>
 
 
@@ -151,26 +151,26 @@ Por tanto será necessário utilizar um usuário administrador.
 <details>
   <summary>Listar Todos</summary>
 
-php
+```php
 Method: GET
 Url: /api/v1/admin/tags
-
+```
 </details>
 
 <details>
   <summary>Listar uma Tag específica</summary>
 
- php
+```php
 Method: GET
 Url: /api/v1/admin/tags/{id}
-
+```
 </details>
 
 
 <details>
   <summary>Adicionar uma nova Tag</summary>
 
-php
+```php
 Method: POST
 Url: /api/v1/admin/tags
 
@@ -179,13 +179,13 @@ Url: /api/v1/admin/tags
     "name": "name of tag",
     "active": true
 }
-
+```
 </details>
 
 <details>
   <summary>Atualizar uma Tag</summary>
 
-php
+```php
 Method: PUT/PATCH
 Url: /api/v1/admin/tags/{id}
 
@@ -194,34 +194,34 @@ Url: /api/v1/admin/tags/{id}
     "name": "biscoito 2 - 1 ",
     "active": false
 }
-
+```
 </details>
 
 <details>
   <summary>Remover uma Tag</summary>
 
-php
+```php
 Method: DELETE
 Url: /api/v1/admin/tags/{id}
-
+```
 </details>
 
 <details>
   <summary>Inativar uma Tag</summary>
 
-php
+```php
 Method: PATCH
 Url: /api/v1/admin/tags/{id}/inactivate
-
+```
 </details>
 
 <details>
   <summary>Ativar uma Tag</summary>
 
-php
+```php
 Method: PATCH
 Url: /api/v1/admin/tags/{id}/activate
-
+```
 </details>
 
 #### Status das Publicações
@@ -229,25 +229,25 @@ Url: /api/v1/admin/tags/{id}/activate
 <details>
   <summary>Listar todos os Status</summary>
   
-php
+```php
 Method: GET
 Url: /api/v1/admin/post/statuses
-
+```
 </details>
 
 <details>
   <summary>Listar  Status específico</summary>
   
-php
+```php
 Method: GET
 Url: /api/v1/post/statuses/{id}
-
+```
 </details>
 
 <details>
   <summary>Adicionar um novo Status</summary>
 
-php
+```php
 Method: POST
 Url: /api/v1/post/statuses
 
@@ -255,13 +255,13 @@ Url: /api/v1/post/statuses
 {
     "name": "name of status - 2"
 }
-
+```
 </details>
 
 <details>
   <summary>Atualizar um Status</summary>
 
-php
+```php
 Method: PUT/PATCH
 Url: /api/v1/post/statuses/{id}
 
@@ -269,16 +269,16 @@ Url: /api/v1/post/statuses/{id}
 {
     "name": "name of status - 2"
 }
-
+```
 </details>
 
 <details>
   <summary>Remover um Status</summary>
 
-php
+```php
 Method: DELETE
 Url: /api/v1/post/statuses/{id}
-
+```
 </details>
 
 <br>
@@ -306,25 +306,25 @@ Estas rotas podem ser acessadas por qualquer usuário devidamente autenticado, p
 <details>
   <summary>Listar todas as publicações</summary>
 
-php
+```php
 Method: GET
 Url: /api/v1/posts
-
+```
 </details>
 
 <details>
   <summary>Listar uma publicação específica</summary>
 
-php
+```php
 Method: GET
 Url: /api/v1/posts/{id}
-
+```
 </details>
 
 <details>
   <summary>Adicionar uma nova publicação</summary>
 
-php
+```php
 Method: POST
 Url: /api/v1/posts
 
@@ -339,14 +339,14 @@ Url: /api/v1/posts
         5
     ]
 }
-
+```
 </details>
 
 <details>
   <summary>Agendar Publicação da Postagem</summary>
   <p>Caso você queria que a publicação (Post) não seja diretamente publicada, você consegue fazer o agendamento para que a API faça a publicação no tempo definido.</p>
 
-php
+```php
 Method: POST
 Url: /api/v1/posts
 
@@ -362,13 +362,13 @@ Url: /api/v1/posts
         5
     ]
 }
-
+```
 </details>
 
 <details>
   <summary>Atualizar uma Publicação</summary>
 
-php
+```php
 Method: PUT/PATCH
 Url: /api/v1/posts/{id}
 
@@ -382,16 +382,16 @@ Url: /api/v1/posts/{id}
 		4
 	]
 }
-
+```
 </details>
 
 <details>
   <summary>Remover uma Publicação</summary>
 
-php
+```php
 Method: DELETE
 Url: /api/v1/posts/{id}
-
+```
 </details>
 
 <br>
@@ -401,21 +401,27 @@ Url: /api/v1/posts/{id}
 2. Acesse a raíz do projeto
 3. Instale as dependências:
 
-bash
+```bash
 $ composer install
+```
 
 4. Uma vez que as dependências tenham sido devidamente intaladas, você precisa configurar as variáveis de ambiente:
 
-bash
+```bash
 $ cp .env.example .env
+```
 
 5. Suba os containers com [Sail](https://laravel.com/docs/11.x/sail):
-bash
+
+```bash
 $ ./vendor/bin/sail up -d
+```
 
 6. Acesse o container e execute as migrations:
-bash
+
+```bash
 $ php artisan migrate
+```
 
 7. O projeto deve estar disponível no endereco: [localhost/](http://localhost/) 
 
