@@ -1,0 +1,1020 @@
+{
+	"info": {
+		"_postman_id": "f9666dd9-f2c0-4260-bdb9-3a4dc5067102",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31462441"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json().data;",
+									"const token = response.token;",
+									"",
+									"postman.setEnvironmentVariable(\"authToken\", token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"contato@jellycode.com.br\",\n    \"password\": \"OtYxBR8ynhLp6Pd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/auth/login",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ADMIN",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"contato@jellycode.com.br\",\n    \"password\": \"OtYxBR8ynhLp6Pd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/auth/login",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "WRITTER",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lucas@jellycode.com.br\",\n    \"password\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/auth/login",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "VIEWER",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"filipe@jellycode.com.br\",\n    \"password\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/auth/login",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{api}}/auth/me",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{api}}/auth/logout",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout All",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{api}}/auth/logout/all",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"logout",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "Bearer {{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Routes",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Tags",
+							"item": [
+								{
+									"name": "List All",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "List Specific",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags/11",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags",
+												"11"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Store",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name of tag - 26\",\n    \"active\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"biscoito 2 - 1 \",\n    \"active\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags/11",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags",
+												"11"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Inactivate",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags/11/inactivate",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags",
+												"11",
+												"inactivate"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Activate",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags/11/activate",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags",
+												"11",
+												"activate"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Destroy",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name of tag\",\n    \"active\": true    \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/tags/11",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"tags",
+												"11"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Post Status",
+							"item": [
+								{
+									"name": "List All",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/post/statuses",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"post",
+												"statuses"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "List Specific",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/post/statuses/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"post",
+												"statuses",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Store",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name of status - 2\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/post/statuses",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"post",
+												"statuses"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"biscoito 2 - 21\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/post/statuses/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"post",
+												"statuses",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Destroy",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name of tag\",\n    \"active\": true    \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/admin/post/statuses/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"post",
+												"statuses",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Common",
+					"item": [
+						{
+							"name": "Posts",
+							"item": [
+								{
+									"name": "List All",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/posts",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "List All",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{api}}/{{version}}/posts",
+													"host": [
+														"{{api}}"
+													],
+													"path": [
+														"{{version}}",
+														"posts"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "List All By Tag",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{api}}/{{version}}/posts?tags=2",
+													"host": [
+														"{{api}}"
+													],
+													"path": [
+														"{{version}}",
+														"posts"
+													],
+													"query": [
+														{
+															"key": "tags",
+															"value": "2"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "List All By Tags [Multiple]",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{api}}/{{version}}/posts?tags=8,3",
+													"host": [
+														"{{api}}"
+													],
+													"path": [
+														"{{version}}",
+														"posts"
+													],
+													"query": [
+														{
+															"key": "tags",
+															"value": "8,3"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								},
+								{
+									"name": "List Specific",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/posts/14",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts",
+												"14"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Store",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"este é o nome do título do site - 43\",\n    \"content\": \"Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.\",\n    \"status_id\": 1,\n    \"tags\": [\n        2,\n        3,\n        5\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/posts",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Schedule Publish",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"title\": \"este é o nome do título do site - 68\",\n    \"content\": \"Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.\",\n    \"status_id\": 4,\n    \"publish_at\": \"2024-06-14 00:20:26\",\n    \"tags\": [\n        2,\n        3,\n        5\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{api}}/{{version}}/posts",
+													"host": [
+														"{{api}}"
+													],
+													"path": [
+														"{{version}}",
+														"posts"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								},
+								{
+									"name": "Update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"este é o nome do título do site - 38 -\",\n    \"content\": \"Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.\",\n    \"status_id\": 1,\n    \"tags\": [\n        3,\n        4\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/posts/14",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts",
+												"14"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Tags",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"tags\": []\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/posts/14/tags",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts",
+												"14",
+												"tags"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Status",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status_id\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/posts/15/status",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts",
+												"15",
+												"status"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Destroy",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/{{version}}/posts/3",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"posts",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "Bearer {{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
