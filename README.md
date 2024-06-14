@@ -1,3 +1,4 @@
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -48,14 +49,18 @@ Este projeto tem como finalidade atestar meus conhecimentos nos seguintes pontos
 ### Organização de rotas
 As rotas estão organizadas e seguimentadas por versão (1x) e domínios da aplicação. O objetivo aqui é dar maior flexibilidade e desacoplamento entre as rotas facilitando assim a manutenção e expansão.
 As rotas estão separadas em:
-- Rotas para autenticação
+- Rotas para autenticação :red_circle:
 - Rotas da API v1
-	- Dominios da aplicação:
-		- Rotas Administrativas:
+	- Dominios da aplicação :large_blue_circle: :
+		- Rotas Administrativas :green_circle: :
 			- Tags
 			- Status das publicações
-		- Comuns:
+		- Comuns :purple_circle: :
 			- Publicações
+
+<p align="center">
+    <img src="https://github.com/lucasfullstackdev/cms/blob/develop/README/organizacao-das-rotas.jpeg" width="900">
+</p>
 
 ### Autenticação
 <hr>
@@ -283,13 +288,18 @@ Url: /api/v1/post/statuses/{id}
 <hr>
 
 Estas rotas podem ser acessadas por qualquer usuário devidamente autenticado, porém existem restrições para o usuário com nível de acesso VIEWER, segue a distribuição de rotas por níveis de acesso: 
--  ADMIN: Acesso total
+- ADMIN: Acesso total
 - WRITTER: 
-	- Pode Listar as publicações
-	- Pode Criar uma nova publicação
-	- Só Pode remover e atualizar uma publicação que ele mesmo criou
+	- Pode Listar as publicações :red_circle:
+	- Pode Criar uma nova publicação :green_circle:
+	- Só Pode remover uma publicação que ele mesmo criou :large_blue_circle:
+    - Só Pode Editar uma publicação que ele mesmo criou :purple_circle:
 -  VIEWER:
-	- Apenas consegue listar as publicações
+	- Apenas consegue listar as publicações :red_circle:
+
+<p align="center">
+    <img src="https://github.com/lucasfullstackdev/cms/blob/develop/README/middlewares.jpeg" width="900">
+</p>
 
 #### Publicações
 
@@ -413,7 +423,7 @@ $ php artisan migrate
 
 ## Observações importantes
 - É aconselhável que você tenha em sua máquina o [postman](https://www.postman.com/) para que possa fazer os devidos testes sobre as rotas disponíveis nesta API.
-- Tenha as collections necessárias para testar [clicando aqui]()
+- Tenha as collections necessárias para testar [clicando aqui](https://github.com/lucasfullstackdev/cms/blob/develop/README/cms-collection.json)
 
 ## Dependências e suas versões
 - [PHP 8.x](https://nodejs.org/en) 20.6.1
